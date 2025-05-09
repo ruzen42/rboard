@@ -5,17 +5,15 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="rboard.MainWindow"
         Title="rboard">
-        <Grid Row="3">
-                <Grid x:Name="Chess" Margin="10"/> <!-- будет в коде генериться -->
+        <Grid>
+                <Grid x:Name="ChessGrid" Margin="10"/> <!-- будет в коде генериться -->
                 <Canvas Grid.Row="1" Margin="10" HorizontalAlignment="Center">
-                        <!-- Фон для имитации тени -->
-                        <Border Background="#888888" Opacity="0.3" CornerRadius="5" 
+                        <Border Background="#888888" Opacity="0.3" CornerRadius="17" 
                                 Width="120" Height="40" Canvas.Left="2" Canvas.Top="2"/>
-                        <!-- Основная кнопка -->
-                        <Button x:Name="StartButton" Content="Start Game" 
+                        <Button Click="StartButtonPressed" x:Name="StartButton" Content="Start Game" 
                                 Width="120" Height="40" Padding="10,5"
                                 HorizontalAlignment="Center" HorizontalContentAlignment="Center"
-                                Background="#4CAF50" Foreground="White" CornerRadius="5"
+                                Background="#4CAF50" Foreground="White" CornerRadius="17"
                                 BorderBrush="#388E3C" BorderThickness="1">
                                 <Button.Styles>
                                         <Style Selector="Button">
