@@ -5,4 +5,6 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="rboard.MainWindow"
         Title="rboard">
+        <Grid>
+                <Grid x:Name="Chess" ColumnDefinitions="8" RowDefinitions="8"/<Grid/>
 </Window>
