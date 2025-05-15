@@ -5,26 +5,40 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="rboard.MainWindow"
         Title="rboard">
-        <Grid>
-                <Grid x:Name="ChessGrid" Margin="10"/> <!-- будет в коде генериться -->
-                <Canvas Grid.Row="1" Margin="10" HorizontalAlignment="Center">
-                        <Border Background="#888888" Opacity="0.3" CornerRadius="17" 
-                                Width="120" Height="40" Canvas.Left="2" Canvas.Top="2"/>
-                        <Button Click="StartButtonPressed" x:Name="StartButton" Content="Start Game" 
-                                Width="120" Height="40" Padding="10,5"
-                                HorizontalAlignment="Center" HorizontalContentAlignment="Center"
-                                Background="#4CAF50" Foreground="White" CornerRadius="17"
-                                BorderBrush="#388E3C" BorderThickness="1">
-                                <Button.Styles>
-                                        <Style Selector="Button">
-                                                <Setter Property="RenderTransform" Value="scale(1)"/>
-                                        </Style>
-                                        <Style Selector="Button:pointerover /template/ ContentPresenter">
-                                                <Setter Property="Background" Value="#45A049"/>
-                                                <Setter Property="RenderTransform" Value="scale(1)"/>
-                                        </Style>
-                                </Button.Styles>
-                        </Button>
-                </Canvas>
-        </Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" /> 
+            <RowDefinition Height="100" /> 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" /> 
+            <ColumnDefinition Width="200" /> 
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="ChessGrid"  Margin="10" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+        <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="10">RBoard</Label>
+        <Canvas Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Width="124" Height="44">
+            <Border Background="#888888" Opacity="0.3" CornerRadius="17" 
+                    Width="120" Height="40" Canvas.Left="2" Canvas.Top="2"/>
+            <Button Click="StartButtonPressed" x:Name="StartButton" Content="Start Game" 
+                    Width="120" Height="40" Padding="11,5"
+                    HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                    Background="#4CAF50" Foreground="White" CornerRadius="17"
+                    BorderBrush="#388E3C" BorderThickness="1">
+                <Button.Styles>
+                    <Style Selector="Button">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter>
+                    </Style>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#45A049"/>
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter>
+                    </Style>
+                </Button.Styles>
+            </Button>
+        </Canvas>
+        
+    </Grid>
 </Window>
