@@ -8,9 +8,9 @@ namespace rboard;
 
 public partial class MainWindow : Window
 {
-    private char[,] board = new char[8, 8];
-    private int _selectedRow = 0; // Выбранная строка
-    private int _selectedCol = 0; // Выбранный столбец
+    private readonly char[,] _board = new char[8, 8];
+    private int[]? selectedFigure;
+    private int[]? selectedMove;
 
     public MainWindow()
     {
@@ -23,31 +23,31 @@ public partial class MainWindow : Window
         {
             for (int col = 0; col < 8; col++)
             {
-                board[row, col] = '0';
+                _board[row, col] = '0';
             }
         }
 
         // Белые фигуры
         for (int col = 0; col < 8; col++)
         {
-            board[1, col] = 'P'; // Пешки
+            _board[1, col] = 'P'; // Пешки
         }
-        board[0, 0] = 'R'; board[0, 7] = 'R'; // Ладьи
-        board[0, 1] = 'N'; board[0, 6] = 'N'; // Кони
-        board[0, 2] = 'B'; board[0, 5] = 'B'; // Слоны
-        board[0, 3] = 'Q'; // Ферзь
-        board[0, 4] = 'K'; // Король
+        _board[0, 0] = 'R'; _board[0, 7] = 'R'; // Ладьи
+        _board[0, 1] = 'N'; _board[0, 6] = 'N'; // Кони
+        _board[0, 2] = 'B'; _board[0, 5] = 'B'; // Слоны
+        _board[0, 3] = 'Q'; // Ферзь
+        _board[0, 4] = 'K'; // Король
 
         // Чёрные фигуры
         for (int col = 0; col < 8; col++)
         {
-            board[6, col] = 'p'; // Пешки
+            _board[6, col] = 'p'; // Пешки
         }
-        board[7, 0] = 'r'; board[7, 7] = 'r'; // Ладьи
-        board[7, 1] = 'n'; board[7, 6] = 'n'; // Кони
-        board[7, 2] = 'b'; board[7, 5] = 'b'; // Слоны
-        board[7, 3] = 'q'; // Ферзь
-        board[7, 4] = 'k'; // Король
+        _board[7, 0] = 'r'; _board[7, 7] = 'r'; // Ладьи
+        _board[7, 1] = 'n'; _board[7, 6] = 'n'; // Кони
+        _board[7, 2] = 'b'; _board[7, 5] = 'b'; // Слоны
+        _board[7, 3] = 'q'; // Ферзь
+        _board[7, 4] = 'k'; // Король
     }
 
     private void InitializeChess()
@@ -81,7 +81,7 @@ public partial class MainWindow : Window
 
                 var piece = new TextBlock
                 {
-                    Text = GetPieceSymbol(board[row, col]),
+                    Text = GetPieceSymbol(_board[row, col]),
                     FontSize = 24,
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
@@ -118,63 +118,21 @@ public partial class MainWindow : Window
     {
         if (sender is Border cell)
         {
-            var row = Grid.GetRow(cell); 
-            var col = Grid.GetColumn(cell); 
+            var row = Grid.GetRow(cell);
+            var col = Grid.GetColumn(cell);
             Console.WriteLine(row);
             Console.WriteLine(col);
-            char piece = board[row, col];
-            
+            char piece = _board[row, col];
+
             if (char.IsUpper(piece) && piece != '0')
             {
-                if (_selectedRow == null || _selectedCol == null)
-                {
-                    _selectedRow = row;
-                    _selectedCol = col;
-                    cell.Background = Brushes.LightGreen;
-                }
-                else
-                {
-                    if (IsLegalMove(board, _selectedRow, _selectedCol, row, col, piece))
-                    {
-                        board[row, col] = piece; // Перемещаем фигуру
-                        board[_selectedRow, _selectedCol] = '0'; // Очищаем исходную позицию
-                        InitializeChess(); // Перерисовываем доску
-                        _selectedRow = 0;
-                        _selectedCol = 0;
-                    }
-                    else
-                    {
-                        InitializeChess(); // Возвращаем исходный вид
-                        _selectedRow = 0;
-                        _selectedCol = 0;
-                    }
-                }
-            }
-            else if (_selectedRow != null && _selectedCol != null)
-            {
-                if (IsLegalMove(board, _selectedRow, _selectedCol, row, col, board[_selectedRow, _selectedCol]))
-                {
-                    board[row, col] = board[_selectedRow, _selectedCol];
-                    board[_selectedRow, _selectedCol] = '0';
-                    InitializeChess();
-                    _selectedRow = 0;
-                    _selectedCol = 0;
-                }
-                else
-                {
-                    InitializeChess(); // Сбрасываем при нелегальном ходе
-                    _selectedRow = 0;
-                    _selectedCol = 0;
-                }
             }
         }
     }
 
     private bool IsLegalMove(char[,] board, int fromRow, int fromCol, int toRow, int toCol, char piece)
     {
-        if (fromRow == toRow && fromCol == toCol)
-            return false;
-        return true;
+        return fromRow != toRow || fromCol != toCol;
     }
 
     private void StartButtonPressed(object? sender, RoutedEventArgs e)

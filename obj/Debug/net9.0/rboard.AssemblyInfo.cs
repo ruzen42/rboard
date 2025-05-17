@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("rboard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6c18de8efdb78f869f66a42fa77819796dd592b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fcf701ed9d0ff7fd3a2f3a519f9b905b0143b2a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("rboard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("rboard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
