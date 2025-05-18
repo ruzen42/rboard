@@ -91,7 +91,7 @@ public partial class MainWindow : Window
                 var piece = new TextBlock
                 {
                     Text = GetPieceSymbol(_board[row, col]),
-                    FontSize = 24,
+                    FontSize = 40,
                     HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
                     VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
                     Foreground = (row + col) % 2 == 0 ? Brushes.Black : Brushes.White,
