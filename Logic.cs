@@ -32,7 +32,7 @@ public class Logic
         }
         else
         {
-            if (targetPiece != '0' && char.IsUpper(piece) == char.IsUpper(targetPiece))
+            if (targetPiece != '0' && char.IsLower(piece) == char.IsLower(targetPiece))
             {
                 return false;
             }
@@ -67,8 +67,8 @@ public class Logic
         {
             return true;
         }
-        
-        var increase = isWhitePiece ? 2 : -2;
+
+        const int increase = 2; 
     
         if (fromCol == toCol && fromRow == startRow && 
             toRow == fromRow + increase * direction && 
