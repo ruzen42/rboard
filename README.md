@@ -1,6 +1,6 @@
 # RBoard - Chess Application
 
-![GitHub License](https://img.shields.io/github/license/ruzen42/rboard?style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/ruzen42/rboard?style=for-the-badge&color=red)
 ![GitHub Release](https://img.shields.io/github/v/release/ruzen42/rboard?style=for-the-badge&color=red)
 
 ![GitHub watchers](https://img.shields.io/github/watchers/ruzen42/rboard?style=for-the-badge&color=green)
