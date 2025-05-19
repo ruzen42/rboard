@@ -2,7 +2,7 @@ using System;
 
 namespace RBoard;
 
-public class Logic
+public abstract class Logic
 {
     private static bool _isWhiteTurn = true;
 

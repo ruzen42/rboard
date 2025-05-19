@@ -7,7 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c159ea-2607-4379-ab15-fcd5b84f4c43" name="Changes" comment="" />
+    <list default="true" id="d5c159ea-2607-4379-ab15-fcd5b84f4c43" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icon.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.rboard.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.rboard.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Logic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.axaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,6 +82,7 @@
       <workItem from="1747389277944" duration="659000" />
       <workItem from="1747553677627" duration="11182000" />
       <workItem from="1747583669084" duration="773000" />
+      <workItem from="1747666971033" duration="2255000" />
     </task>
     <servers />
   </component>
