@@ -4,7 +4,7 @@ namespace RBoard;
 
 public abstract class Logic
 {
-    private static bool _isWhiteTurn = true;
+    public static bool IsWhiteTurn = true;
 
     public static bool IsLegalMove(char[,] board, int fromRow, int fromCol, int toRow, int toCol, char targetPiece)
     {
@@ -18,12 +18,12 @@ public abstract class Logic
         
         if (piece == '0') return false;
         
-        if ((_isWhiteTurn && !char.IsUpper(piece)) || (!_isWhiteTurn && char.IsUpper(piece)))
+        if ((IsWhiteTurn && !char.IsUpper(piece)) || (!IsWhiteTurn && char.IsUpper(piece)))
         {
             return false;
         }
 
-        if (_isWhiteTurn)
+        if (IsWhiteTurn)
         {
             if (targetPiece != '0' && char.IsUpper(piece) == char.IsUpper(targetPiece))
             {
@@ -51,7 +51,7 @@ public abstract class Logic
 
         if (isValidMove)
         {
-            _isWhiteTurn = !_isWhiteTurn;
+            IsWhiteTurn = !IsWhiteTurn;
         }
 
         return isValidMove;
@@ -144,6 +144,6 @@ public abstract class Logic
 
     public static void ResetTurn()
     {
-        _isWhiteTurn = true;
+        IsWhiteTurn = true;
     }
 }

@@ -14,6 +14,7 @@ public partial class MainWindow : Window
     private int[]? _selectedFigure;
     private int[]? _selectedMove;
     private Grid? _grid;
+    private Label _turnLabel;
 
     public MainWindow()
     {
@@ -63,6 +64,7 @@ public partial class MainWindow : Window
     {
         const int rows = 8;
         _grid = this.FindControl<Grid>("ChessGrid") ?? throw new NullReferenceException("ChessGrid");
+        _turnLabel = this.FindControl<Label>("TurnLabel") ?? throw new NullReferenceException("TurnLabel");
 
 
         _grid.RowDefinitions.Clear();
@@ -158,6 +160,11 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
         _selectedFigure = null;
     }
 
+    private void UpdateTurn(object? sender, RoutedEventArgs? e)
+    {
+       _turnLabel.Content = IsWhiteTurn ? "White Turn" : "Black Turn";
+    }
+
     private void StartButtonPressed(object? sender, RoutedEventArgs e)
     {
         ResetTurn();
@@ -167,19 +174,19 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
 
     private void UpdateChessGrid()
     {
+        UpdateTurn(null, null);
         foreach (var child in (_grid ?? this.GetControl<Grid>("ChessGrid")).Children)
         {
-            if (child is Border cell)
-            {
-                var row = Grid.GetRow(cell);
-                var col = Grid.GetColumn(cell);
-                if (cell.Child is TextBlock piece)
-                {
-                    piece.Text = GetPieceSymbol(_board[row, col]);
-                    piece.Foreground = (row + col) % 2 == 0 ? Brushes.Black : Brushes.White;
-                    piece.Background = (row + col) % 2 == 1 ? Brushes.Black : Brushes.White;
-                }
-            }
+            if (child is not Border cell) continue;
+            
+            var row = Grid.GetRow(cell);
+            var col = Grid.GetColumn(cell);
+                
+            if (cell.Child is not TextBlock piece) continue;
+                
+            piece.Text = GetPieceSymbol(_board[row, col]);
+            piece.Foreground = (row + col) % 2 == 0 ? Brushes.Black : Brushes.White;
+            piece.Background = (row + col) % 2 == 1 ? Brushes.Black : Brushes.White;
         }
     }
 }

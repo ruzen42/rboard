@@ -8,11 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c159ea-2607-4379-ab15-fcd5b84f4c43" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icon.xcf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.rboard.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.rboard.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Logic.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon.xcf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +25,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Logic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -56,13 +62,13 @@
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="--self-contained -C Release" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="RUNTIME_TYPE" value="coreclr" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/rboard.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_KIND" value="Unloaded" />
       <option name="PROJECT_TFM" value="net9.0" />
       <method v="2">
         <option name="Build" />
@@ -82,7 +88,7 @@
       <workItem from="1747389277944" duration="659000" />
       <workItem from="1747553677627" duration="11182000" />
       <workItem from="1747583669084" duration="773000" />
-      <workItem from="1747666971033" duration="2255000" />
+      <workItem from="1747666971033" duration="4068000" />
     </task>
     <servers />
   </component>
