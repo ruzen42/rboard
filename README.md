@@ -1,9 +1,10 @@
 # RBoard - Chess Application
 
-![GitHub License](https://img.shields.io/github/license/ruzen42/rboard?style=flat-square)
-![GitHub Release](https://img.shields.io/github/v/release/ruzen42/rboard?style=flat-square&color=red)
-![GitHub watchers](https://img.shields.io/github/watchers/ruzen42/rboard?style=flat-square&color=green)
-![GitHub contributors](https://img.shields.io/github/contributors/ruzen42/rboard?style=flat-square&color=red)
+![GitHub License](https://img.shields.io/github/license/ruzen42/rboard?style=for-the-badge)
+![GitHub Release](https://img.shields.io/github/v/release/ruzen42/rboard?style=for-the-badge&color=red)
+
+![GitHub watchers](https://img.shields.io/github/watchers/ruzen42/rboard?style=for-the-badge&color=green)
+![GitHub contributors](https://img.shields.io/github/contributors/ruzen42/rboard?style=for-the-badge&color=red)
 
 RBoard is a cross-platform chess application developed using Avalonia UI and .NET 9.0. The application implements classic chess rules with board and pieces visualization.
 
