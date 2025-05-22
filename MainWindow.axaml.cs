@@ -1,11 +1,11 @@
 
 using System;
-using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using static RBoard.Logic;
+using static RBoard.Logger;
 
 namespace RBoard;
 
@@ -63,6 +63,7 @@ public partial class MainWindow : Window
 
     private void InitializeChess()
     {
+       Info("Chess initialized"); 
         const int rows = 8;
         _grid = this.FindControl<Grid>("ChessGrid") ?? throw new NullReferenceException("ChessGrid");
         _turnLabel = this.FindControl<Label>("TurnLabel") ?? throw new NullReferenceException("TurnLabel");
@@ -113,7 +114,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private string GetPieceSymbol(char piece)
+    private static string GetPieceSymbol(char piece)
     {
         return piece switch
     {
@@ -128,33 +129,33 @@ public partial class MainWindow : Window
 }
 
 private void Cell_Clicked(object? sender, RoutedEventArgs e)
+{
+    if (sender is not Border cell) return;
+    
+    var row = Grid.GetRow(cell);
+    var col = Grid.GetColumn(cell);
+    var piece = _board[row, col];
+
+    if (_selectedFigure == null)
     {
-        if (sender is Border cell)
-        {
-            var row = Grid.GetRow(cell);
-            var col = Grid.GetColumn(cell);
-            var piece = _board[row, col];
-
-            if (_selectedFigure == null)
-            {
-                _selectedFigure = [row, col];
-                Console.WriteLine($"Row: {row}, Col: {col}");
-                Console.WriteLine($"Selected figure: {piece}");
-            }
-            else if (_selectedFigure != null)
-            {
-                _selectedMove = [row, col];
-                if (IsLegalMove(_board, _selectedFigure[0], _selectedFigure[1], _selectedMove[0], _selectedMove[1], _board[row, col]))
-                {
-                    _board[_selectedMove[0], _selectedMove[1]] = _board[_selectedFigure[0], _selectedFigure[1]];
-                    _board[_selectedFigure[0], _selectedFigure[1]] = '0';
-
-                    _selectedFigure = null;
-                    UpdateChessGrid();
-                }
-            }
-        }
+        _selectedFigure = [row, col];
+        Debug($"Row: {row}, Col: {col}");
+        Debug($"Selected figure: {piece}");
     }
+    else if (_selectedFigure != null)
+    {
+        _selectedMove = [row, col];
+                
+        if (!IsLegalMove(_board, _selectedFigure[0], _selectedFigure[1], _selectedMove[0], _selectedMove[1],
+                _board[row, col])) return;
+                
+        _board[_selectedMove[0], _selectedMove[1]] = _board[_selectedFigure[0], _selectedFigure[1]];
+        _board[_selectedFigure[0], _selectedFigure[1]] = '0';
+
+        _selectedFigure = null;
+        UpdateChessGrid();
+    }
+}
 
     private void Rethink(object? sender, RoutedEventArgs e)
     {
@@ -186,10 +187,15 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
             var col = Grid.GetColumn(cell);
                 
             if (cell.Child is not TextBlock piece) continue;
-                
+
             piece.Text = GetPieceSymbol(_board[row, col]);
-            piece.Foreground = char.IsUpper(_board[row, col]) ? Brushes.White : Brushes.Black;  ;
-            piece.Background = Brushes.Transparent;
+            piece.Foreground = (row + col) % 2 == 0 ? Brushes.Black : Brushes.White;
+            piece.Background = (row + col) % 2 == 1 ? Brushes.Black : Brushes.White;
         }
+    }
+    
+    protected override void OnClosing(WindowClosingEventArgs e)
+    {
+        Info("Game Closed");
     }
 }

@@ -15,6 +15,10 @@
         <Style Selector="TextBlock">
             <Setter Property="Foreground" Value="#D5C9AB"/>
         </Style>
+        <Style Selector="Border.chess-cell">
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Margin" Value="1"/>
+        </Style>
         <Style Selector="Button">
             <Setter Property="Background" Value="#3C474D"/>
             <Setter Property="Foreground" Value="#D5C9AB"/>
@@ -42,49 +46,51 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid Name="ChessGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
                 </Grid.ColumnDefinitions>
             </Grid>
         </Border>
 
         <Grid Grid.Row="2" Margin="0,20,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/> 
+                <ColumnDefinition Width="Auto"/> 
             </Grid.ColumnDefinitions>
-            
-            <Button Content="Start New Game" 
-                    Grid.Column="1" 
-                    HorizontalAlignment="Center"
-                    FontSize="16"
-                    Click="StartButtonPressed"/>
-            
+    
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                <Button Content="Start New Game" 
+                        FontSize="16"
+                        Click="StartButtonPressed"/>
+                <Button Content="Rethink" 
+                        FontSize="16"
+                        Click="Rethink"/>
+            </StackPanel>
+    
             <Label Name="TurnLabel"
-                       Grid.Column="2"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       FontSize="18"
-                       Margin="0,0,10,0"
-                       Content="White turn"
-                       Foreground="#A7C080"/>
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   FontSize="18"
+                   Margin="10,0,0,0"
+                   Content="White turn"
+                   Foreground="#A7C080"/>
         </Grid>
     </Grid>
 </Window>
