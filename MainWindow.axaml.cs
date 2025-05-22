@@ -1,5 +1,6 @@
 
 using System;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -14,7 +15,7 @@ public partial class MainWindow : Window
     private int[]? _selectedFigure;
     private int[]? _selectedMove;
     private Grid? _grid;
-    private Label _turnLabel;
+    private Label? _turnLabel;
 
     public MainWindow()
     {
@@ -162,12 +163,14 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
 
     private void UpdateTurn(object? sender, RoutedEventArgs? e)
     {
-       _turnLabel.Content = IsWhiteTurn ? "White Turn" : "Black Turn";
+      if (_turnLabel != null)
+        _turnLabel.Content = IsWhiteTurn ? "White Turn" : "Black Turn";
     }
 
     private void StartButtonPressed(object? sender, RoutedEventArgs e)
     {
         ResetTurn();
+        UpdateTurn(null, null);
         InitializeBoard();
         InitializeChess();
     }
@@ -185,8 +188,8 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
             if (cell.Child is not TextBlock piece) continue;
                 
             piece.Text = GetPieceSymbol(_board[row, col]);
-            piece.Foreground = (row + col) % 2 == 0 ? Brushes.Black : Brushes.White;
-            piece.Background = (row + col) % 2 == 1 ? Brushes.Black : Brushes.White;
+            piece.Foreground = char.IsUpper(_board[row, col]) ? Brushes.White : Brushes.Black;  ;
+            piece.Background = Brushes.Transparent;
         }
     }
 }
