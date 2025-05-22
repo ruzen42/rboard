@@ -14,22 +14,22 @@ public static class Logger
     {
         Log("ERROR", message);
     }
-    
+
     public static void Warn(string message)
     {
         Log("WARN", message);
     }
-    
+
     public static void Debug(string message)
     {
         Log("DEBUG", message);
     }
-    
+
     public static void Info(string message)
     {
         Log("INFO", message);
     }
-    
+
     private static void Log(string level, string message)
     {
         var originalColor = Console.ForegroundColor;
@@ -38,22 +38,22 @@ public static class Logger
         Console.Write($"[{DateTime.Now:HH:mm:ss.fff}] ");
 
         Console.ForegroundColor = level switch
-        {
-            "INFO" => InfoColor,
-            "ERROR" => ErrorColor,
-            "DEBUG" => DebugColor,
-            "WARN" => WarnColor,
-            _ => InfoColor
-        };
-        
-        Console.Write($"{level,-5} ");
+    {
+        "INFO" => InfoColor,
+        "ERROR" => ErrorColor,
+        "DEBUG" => DebugColor,
+        "WARN" => WarnColor,
+        _ => InfoColor
+    };
+
+    Console.Write($"{level,-5} ");
 
         Console.ForegroundColor = originalColor;
         Console.WriteLine(message);
 
 #if DEBUG
         if (level is not ("ERROR" or "WARN")) return;
-        
+
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine($"Call stack: {Environment.StackTrace}\n");
         Console.ForegroundColor = originalColor;

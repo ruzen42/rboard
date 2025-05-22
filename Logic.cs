@@ -9,15 +9,15 @@ public abstract class Logic
     public static bool IsLegalMove(char[,] board, int fromRow, int fromCol, int toRow, int toCol, char targetPiece)
     {
         if (fromRow < 0 || fromRow > 7 || fromCol < 0 || fromCol > 7 ||
-            toRow < 0 || toRow > 7 || toCol < 0 || toCol > 7)
+                toRow < 0 || toRow > 7 || toCol < 0 || toCol > 7)
         {
             return false;
         }
 
         char piece = board[fromRow, fromCol];
-        
+
         if (piece == '0') return false;
-        
+
         if ((IsWhiteTurn && !char.IsUpper(piece)) || (!IsWhiteTurn && char.IsUpper(piece)))
         {
             return false;
@@ -39,8 +39,8 @@ public abstract class Logic
         }
 
         bool isValidMove = char.ToLower(piece) switch
-        {
-            'p' => IsPawnMoveValid(board, fromRow, fromCol, toRow, toCol, piece),
+    {
+        'p' => IsPawnMoveValid(board, fromRow, fromCol, toRow, toCol, piece),
             'r' => IsRookMoveValid(board, fromRow, fromCol, toRow, toCol),
             'n' => IsKnightMoveValid(fromRow, fromCol, toRow, toCol),
             'b' => IsBishopMoveValid(board, fromRow, fromCol, toRow, toCol),
@@ -62,24 +62,24 @@ public abstract class Logic
         var isWhitePiece = char.IsUpper(piece);
         var direction = isWhitePiece ? -1 : 1;
         var startRow = isWhitePiece ? 6 : 1;
-    
+
         if (fromCol == toCol && toRow == fromRow + direction && board[toRow, toCol] == '0')
         {
             return true;
         }
 
-        const int increase = 2; 
-    
-        if (fromCol == toCol && fromRow == startRow && 
-            toRow == fromRow + increase * direction && 
-            board[fromRow + direction, fromCol] == '0' && 
-            board[toRow, toCol] == '0')
+        const int increase = 2;
+
+        if (fromCol == toCol && fromRow == startRow &&
+        toRow == fromRow + increase * direction &&
+        board[fromRow + direction, fromCol] == '0' &&
+        board[toRow, toCol] == '0')
         {
             return true;
         }
 
         return Math.Abs(fromCol - toCol) == 1 && toRow == fromRow + direction &&
-               board[toRow, toCol] != '0';
+                                            board[toRow, toCol] != '0';
     }
 
     private static bool IsRookMoveValid(char[,] board, int fromRow, int fromCol, int toRow, int toCol)
@@ -131,7 +131,7 @@ public abstract class Logic
 
     private static bool IsQueenMoveValid(char[,] board, int fromRow, int fromCol, int toRow, int toCol)
     {
-        return IsRookMoveValid(board, fromRow, fromCol, toRow, toCol) || 
+        return IsRookMoveValid(board, fromRow, fromCol, toRow, toCol) ||
                IsBishopMoveValid(board, fromRow, fromCol, toRow, toCol);
     }
 

@@ -63,7 +63,7 @@ public partial class MainWindow : Window
 
     private void InitializeChess()
     {
-       Info("Chess initialized"); 
+        Info("Chess initialized");
         const int rows = 8;
         _grid = this.FindControl<Grid>("ChessGrid") ?? throw new NullReferenceException("ChessGrid");
         _turnLabel = this.FindControl<Label>("TurnLabel") ?? throw new NullReferenceException("TurnLabel");
@@ -129,33 +129,33 @@ public partial class MainWindow : Window
 }
 
 private void Cell_Clicked(object? sender, RoutedEventArgs e)
-{
-    if (sender is not Border cell) return;
-    
-    var row = Grid.GetRow(cell);
-    var col = Grid.GetColumn(cell);
-    var piece = _board[row, col];
-
-    if (_selectedFigure == null)
     {
-        _selectedFigure = [row, col];
-        Debug($"Row: {row}, Col: {col}");
-        Debug($"Selected figure: {piece}");
-    }
-    else if (_selectedFigure != null)
-    {
-        _selectedMove = [row, col];
-                
-        if (!IsLegalMove(_board, _selectedFigure[0], _selectedFigure[1], _selectedMove[0], _selectedMove[1],
-                _board[row, col])) return;
-                
-        _board[_selectedMove[0], _selectedMove[1]] = _board[_selectedFigure[0], _selectedFigure[1]];
-        _board[_selectedFigure[0], _selectedFigure[1]] = '0';
+        if (sender is not Border cell) return;
 
-        _selectedFigure = null;
-        UpdateChessGrid();
+        var row = Grid.GetRow(cell);
+        var col = Grid.GetColumn(cell);
+        var piece = _board[row, col];
+
+        if (_selectedFigure == null)
+        {
+            _selectedFigure = [row, col];
+            Debug($"Row: {row}, Col: {col}");
+            Debug($"Selected figure: {piece}");
+        }
+        else if (_selectedFigure != null)
+        {
+            _selectedMove = [row, col];
+
+            if (!IsLegalMove(_board, _selectedFigure[0], _selectedFigure[1], _selectedMove[0], _selectedMove[1],
+                             _board[row, col])) return;
+
+            _board[_selectedMove[0], _selectedMove[1]] = _board[_selectedFigure[0], _selectedFigure[1]];
+            _board[_selectedFigure[0], _selectedFigure[1]] = '0';
+
+            _selectedFigure = null;
+            UpdateChessGrid();
+        }
     }
-}
 
     private void Rethink(object? sender, RoutedEventArgs e)
     {
@@ -164,8 +164,8 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
 
     private void UpdateTurn(object? sender, RoutedEventArgs? e)
     {
-      if (_turnLabel != null)
-        _turnLabel.Content = IsWhiteTurn ? "White Turn" : "Black Turn";
+        if (_turnLabel != null)
+            _turnLabel.Content = IsWhiteTurn ? "White Turn" : "Black Turn";
     }
 
     private void StartButtonPressed(object? sender, RoutedEventArgs e)
@@ -182,10 +182,10 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
         foreach (var child in (_grid ?? this.GetControl<Grid>("ChessGrid")).Children)
         {
             if (child is not Border cell) continue;
-            
+
             var row = Grid.GetRow(cell);
             var col = Grid.GetColumn(cell);
-                
+
             if (cell.Child is not TextBlock piece) continue;
 
             piece.Text = GetPieceSymbol(_board[row, col]);
@@ -193,7 +193,7 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
             piece.Background = (row + col) % 2 == 1 ? Brushes.Black : Brushes.White;
         }
     }
-    
+
     protected override void OnClosing(WindowClosingEventArgs e)
     {
         Info("Game Closed");
