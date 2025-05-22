@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c159ea-2607-4379-ab15-fcd5b84f4c43" name="Changes" comment="" />
+    <list default="true" id="d5c159ea-2607-4379-ab15-fcd5b84f4c43" name="Changes" comment="add Logger class and fix bugs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,15 +83,37 @@
       <workItem from="1747583669084" duration="773000" />
       <workItem from="1747666971033" duration="4159000" />
       <workItem from="1747744122558" duration="2529000" />
-      <workItem from="1747910771745" duration="5509000" />
+      <workItem from="1747910771745" duration="5843000" />
     </task>
+    <task id="LOCAL-00001" summary="add Logger class and fix bugs">
+      <option name="closed" value="true" />
+      <created>1747919988674</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747919988674</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="add Logger class and fix bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Logger class and fix bugs" />
   </component>
 </project>
