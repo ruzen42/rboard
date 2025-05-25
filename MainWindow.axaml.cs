@@ -147,7 +147,11 @@ private void Cell_Clicked(object? sender, RoutedEventArgs e)
             _selectedMove = [row, col];
 
             if (!IsLegalMove(_board, _selectedFigure[0], _selectedFigure[1], _selectedMove[0], _selectedMove[1],
-                             _board[row, col])) return;
+                    _board[row, col]))
+            {
+               Error("Illegal move");
+               return;
+            }
 
             _board[_selectedMove[0], _selectedMove[1]] = _board[_selectedFigure[0], _selectedFigure[1]];
             _board[_selectedFigure[0], _selectedFigure[1]] = '0';
